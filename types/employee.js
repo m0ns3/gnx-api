@@ -2,12 +2,15 @@ const graphql = require("graphql");
 const gnx = require("@simtlix/gnx");
 const EmployeeModel = require("../models/employee").Employee;
 
+const GenderEnumType = require("./genderEnum");
+
 const {
   GraphQLNonNull,
   GraphQLString,
   GraphQLID,
   GraphQLObjectType,
-  GraphQLEnumType
+  GraphQLInt,
+  GraphQLList
 } = graphql;
 
 const EmployeeType = new GraphQLObjectType({
@@ -19,7 +22,7 @@ const EmployeeType = new GraphQLObjectType({
     birth_date: { type: GraphQLNonNull(GraphQLString) },
     first_name: { type: GraphQLNonNull(GraphQLString) },
     last_name: { type: GraphQLNonNull(GraphQLString) },
-    gender: { type: GraphQLNonNull(GraphQLEnumType) },
+    gender: { type: GraphQLNonNull(GenderEnumType) },
     hire_date: { type: GraphQLNonNull(GraphQLString) },
     salary: {
       type: SalaryType,

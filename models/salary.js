@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const salaryFields = {
   EmployeeID: Schema.Types.ObjectId,
-  salary: Float,
+  salary: Number,
   from_date: String,
   to_date: String
 };

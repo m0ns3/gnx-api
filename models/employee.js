@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const employeeFields = {
-  dni: Int,
+  dni: Number,
   birth_date: String,
   first_name: String,
   last_name: String,
-  gender: Enum,
+  gender: String,
   hire_date: String,
   SalaryID: Schema.Types.ObjectId,
   TitleID: Schema.Types.ObjectId,

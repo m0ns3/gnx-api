@@ -4,7 +4,13 @@ const gnx = require("@simtlix/gnx");
 const Employee = require("../models/employee").Employee;
 const TitleModel = require("../models/title").Title;
 
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLNonNull,
+  GraphQLInt
+} = graphql;
 
 const TitleType = new GraphQLObjectType({
   name: "TitleType",

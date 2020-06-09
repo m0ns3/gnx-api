@@ -4,7 +4,13 @@ const gnx = require("@simtlix/gnx");
 const Employee = require("../models/employee").Employee;
 const Dept_employeeModel = require("../models/dept_employee").Dept_employee;
 
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLNonNull,
+  GraphQLInt
+} = graphql;
 
 const Dept_employeeType = new GraphQLObjectType({
   name: "Dept_employeeType",
@@ -49,7 +55,7 @@ gnx.connect(
   "dept_employees"
 );
 
-module.exports = ept_employeeType;
+module.exports = Dept_employeeType;
 
 const EmployeeType = require("./employee");
 const DepartmentType = require("./department");

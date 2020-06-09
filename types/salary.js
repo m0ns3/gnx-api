@@ -9,7 +9,8 @@ const {
   GraphQLString,
   GraphQLID,
   GraphQLNonNull,
-  GraphQLFloat
+  GraphQLFloat,
+  GraphQLInt
 } = graphql;
 
 const SalaryType = new GraphQLObjectType({

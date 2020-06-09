@@ -5,7 +5,13 @@ const Employee = require("../models/employee").Employee;
 const Department = require("../models/department").Department;
 const Dept_managerModel = require("../models/dept_manager").Dept_manager;
 
-const { GraphQLNonNull, GraphQLString, GraphQLID, GraphQLObjectType } = graphql;
+const {
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLID,
+  GraphQLObjectType,
+  GraphQLInt
+} = graphql;
 
 const Dept_managerType = new GraphQLObjectType({
   name: "Dept_managerType",

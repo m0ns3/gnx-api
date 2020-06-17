@@ -5,6 +5,7 @@ const app = express();
 const graphqlHTTP = require("express-graphql");
 
 const mongoose = require("mongoose");
+mongoose.plugin(require('./plugins/auditablePluginSchema'));
 
 mongoose.connect(
   "mongodb://localhost:27017,localhost:27018,localhost:27019/example",

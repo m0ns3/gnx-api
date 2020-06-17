@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const titleFields = {
   EmployeeID: Schema.Types.ObjectId,
   title: String,
-  from_date: String,
-  to_date: String
+  from_date: Date,
+  to_date: Date
 };
 
 const titleSchema = new Schema(titleFields);

@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const employeeFields = {
   dni: Number,
-  birth_date: String,
+  birth_date: Date,
   first_name: String,
   last_name: String,
   gender: String,
-  hire_date: String,
+  hire_date: Date,
   SalaryID: Schema.Types.ObjectId,
   TitleID: Schema.Types.ObjectId,
   Dept_managerID: Schema.Types.ObjectId,

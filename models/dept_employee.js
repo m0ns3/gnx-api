@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const dept_employeeFields = {
   EmployeeID: Schema.Types.ObjectId,
   DepartmentID: Schema.Types.ObjectId,
-  from_date: String,
-  to_date: String
+  from_date: Date,
+  to_date: Date
 };
 
 const dept_employeeSchema = new Schema(dept_employeeFields);

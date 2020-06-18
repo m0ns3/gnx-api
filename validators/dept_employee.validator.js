@@ -26,7 +26,7 @@ class InvalidCantEmployeeByDeptError extends GNXError {
   constructor(typeName) {
     super(
       typeName,
-      "Can be more than an employee asigned at the same department at the same time.",
+      "Can't be more than an employee asigned at the same department at the same time.",
       "InvalidCantEmployeeByDeptError"
     );
   }

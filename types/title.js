@@ -5,20 +5,13 @@ const graphqlIsoDate = require("graphql-iso-date");
 const Employee = require("../models/employee").Employee;
 const TitleModel = require("../models/title").Title;
 
-/* const {
-  AuditableObjectFields
-} = require("./extended_types/auditableGraphQLObjectType"); */
-
 const { validDateRange } = require("../validators/date.validator");
-const { CantDeleteTitleRelated } = require("../validators/title.validator");
-
 const {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLNonNull,
-  GraphQLInt
-} = graphql;
+  CantHaveTwoTitlesByEmployeeWithSameDept,
+  CantDeleteTitleRelated
+} = require("../validators/title.validator");
+
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } = graphql;
 
 const { GraphQLDate } = graphqlIsoDate;
 
@@ -27,8 +20,8 @@ const TitleType = new GraphQLObjectType({
   description: "Represent titles",
   extensions: {
     validations: {
-      CREATE: [validDateRange],
-      UPDATE: [validDateRange],
+      CREATE: [CantHaveTwoTitlesByEmployeeWithSameDept, validDateRange],
+      UPDATE: [CantHaveTwoTitlesByEmployeeWithSameDept, validDateRange],
       DELETE: [CantDeleteTitleRelated]
     }
   },

@@ -1,10 +1,36 @@
 const gnx = require("@simtlix/gnx");
 const GNXError = gnx.GNXError;
-const { Employee } = require("../models/employee");
+const { Title } = require("../models/title");
+
+const CantHaveTwoTitlesByEmployeeWithSameDept = {
+  validate: async function(typeName, originalObject, materializedObject) {
+    const EmployeeFinded = await Title.find({
+      EmployeeID: materializedObject.EmployeeID
+    });
+
+    EmployeeFinded.forEach(emp => {
+      if (emp && emp._id != materializedObject.id) {
+        if (emp && emp.title != materializedObject.title) {
+          throw new CantHaveTwoTitlesByEmployeeWithSameDeptError(typeName);
+        }
+      }
+    });
+  }
+};
+
+class CantHaveTwoTitlesByEmployeeWithSameDeptError extends GNXError {
+  constructor(typeName) {
+    super(
+      typeName,
+      "Can't have more than an title with the same dept_name by employee.",
+      "CantHaveTwoTitlesByEmployeeWithSameDeptError"
+    );
+  }
+}
 
 const CantDeleteTitleRelated = {
   validate: async function(typeName, originalObject, materializedObject) {
-    const EmployeeFinded = await Employee.findOne({ TitleID: originalObject });
+    const EmployeeFinded = await Title.findOne({ EmployeeID: originalObject });
 
     if (EmployeeFinded) {
       throw new CantDeleteTitleRelatedError(typeName);
@@ -31,5 +57,6 @@ const executeAuditableOnUpdating = async (objectId, modifiedObject) => {
 };
 
 module.exports = {
+  CantHaveTwoTitlesByEmployeeWithSameDept,
   CantDeleteTitleRelated
 };
